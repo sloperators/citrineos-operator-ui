@@ -66,3 +66,4 @@ tsconfig.json
 .prettierrc
 Dockerfile
 local.Dockerfile
+.github/workflows/build-push.yml
