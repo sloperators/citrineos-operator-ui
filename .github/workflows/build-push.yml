@@ -70,6 +70,10 @@ jobs:
           file: ${{ env.DOCKERFILE }}
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.SERVICE }}:${{ steps.meta.outputs.image_tag }}
+          build-args: |
+            NEXT_PUBLIC_ADMIN_EMAIL=${{ secrets.NEXT_PUBLIC_ADMIN_EMAIL }}
+            NEXT_PUBLIC_ADMIN_PASSWORD=${{ secrets.NEXT_PUBLIC_ADMIN_PASSWORD }}
+            NEXT_PUBLIC_AUTH_PROVIDER=generic
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64

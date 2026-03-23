@@ -21,6 +21,11 @@ COPY --from=deps /app/node_modules ./node_modules
 
 COPY . .
 
+# NEXT_PUBLIC_* vars are inlined into the client bundle at build time.
+ARG NEXT_PUBLIC_ADMIN_EMAIL
+ARG NEXT_PUBLIC_ADMIN_PASSWORD
+ARG NEXT_PUBLIC_AUTH_PROVIDER=generic
+
 RUN npm run build
 
 FROM base AS runner
